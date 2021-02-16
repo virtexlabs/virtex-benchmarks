@@ -1,0 +1,8 @@
+*__pycache__/
+*Dockerfile*
+*.DS_Store
+*.idea/
+*README.md
+k8s/
+data/tiny-imagenet-200/train
+data/tiny-imagenet-200/val
