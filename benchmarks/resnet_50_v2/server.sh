@@ -2,10 +2,9 @@
 
 gunicorn \
   server:app \
-  -w "$1" \
+  -w "$NUM_VIRTEX_WORKERS" \
   -k virtex.VirtexWorker \
-  --bind localhost:8081 \
-  --max-requests 10000 \
-  --worker-connections 10000 \
+  --bind localhost:"$VIRTEX_SERVICE_PORT" \
+  --worker-connections "$MAX_CONCURRENT_CONNECTIONS"  \
   --logger-class virtex.VirtexLogger \
-  --log-level "$2"
+  --log-level "$LOG_LEVEL"

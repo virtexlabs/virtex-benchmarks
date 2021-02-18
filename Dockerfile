@@ -48,11 +48,20 @@ COPY run.sh /root/virtex-benchmarks/
 COPY data/ /root/virtex-benchmarks/data/
 COPY benchmarks /root/virtex-benchmarks/benchmarks
 
-ENV TASK=''
-ENV WORKERS=''
-ENV NUM_DATA=''
-ENV RPS=''
-ENV BATCHSIZE=''
-ENV LOGLEVEL=''
+# Config
+ENV TASK='' \
+    LOG_LEVEL='' \
+    VIRTEX_SERVICE_PORT='' \
+    MAX_CONCURRENT_CONNECTIONS='' \
+    NUM_VIRTEX_WORKERS='' \
+    MAX_BATCH_SIZE='' \
+    MAX_TIME_ON_QUEUE='' \
+    METRICS_INTERVAL='' \
+    MAX_SEQUENCE_LENGTH='' \
+    NUM_INFERENCES='' \
+    CLIENT_REQUESTS_PER_SECOND='' \
+    REQUEST_BATCH_SIZE='' \
+    CONTENT_LENGTH=''
 
+# Entrypoint
 ENTRYPOINT ["/bin/bash", "-l", "/root/virtex-benchmarks/run.sh"]

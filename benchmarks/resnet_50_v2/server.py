@@ -13,7 +13,9 @@ from virtex.serial import encode_bytes, encode_pickle, \
 
 max_batch_size = int(os.getenv('MAX_BATCH_SIZE', 56))
 max_time_on_queue = float(os.getenv('MAX_TIME_ON_QUEUE', 0.01))
-metrics_interval = float(os.getenv('METRICS_INTERVAL', 0.005))
+metrics_interval = float(os.getenv('METRICS_INTERVAL', 0.05))
+metrics_host = os.getenv('PUSHGATEWAY_SERVICE_HOST', 'http://127.0.0.1')
+metrics_port = int(os.getenv('PUSHGATEWAY_SERVICE_PORT', 9091))
 
 
 # Build ResNet50 request handler
@@ -59,25 +61,25 @@ image = open(os.path.join(
     path, "../../data/tiny-imagenet-200/test/images/test_0.JPEG"
 ), 'rb').read()
 
+# Create messages with encoded payloads
 message1 = HttpMessage(data=[image])
 message1.encode(encode_bytes)
 message2 = HttpMessage(data=[image for _ in range(max_batch_size)])
 message2.encode(encode_bytes)
 
-# Validate the handler can process the message
+# Validate that handler can process messages
 resnet_request_handler = Resnet50Computation()
 assert resnet_request_handler.validate(message1)
 assert resnet_request_handler.validate(message2)
 
-
-# Create an http server
+# Create http server
 app = http_server(
-    name='resnet_50_v2_image_classification_service',
+    name='resnet_50_v2_service',
     handler=Resnet50Computation(),
     max_batch_size=max_batch_size,
     max_time_on_queue=max_time_on_queue,
-    metrics_host='http://0.0.0.0',
-    metrics_port=9091,
+    metrics_host=metrics_host,
+    metrics_port=metrics_port,
     metrics_mode='push',
     metrics_interval=metrics_interval
 )

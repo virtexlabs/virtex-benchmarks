@@ -2,6 +2,7 @@
 *Dockerfile*
 *.DS_Store
 *.idea/
+.local/
 *README.md
 k8s/
 data/tiny-imagenet-200/train
