@@ -115,18 +115,6 @@ spec:
                 configMapKeyRef:
                   name: virtex-load-test-config
                   key: CONTENT_LENGTH
-        livenessProbe:
-          httpGet:
-            path: /health/live
-            port: 8000
-          initialDelaySeconds: 15
-          periodSeconds: 15
-        readinessProbe:
-          httpGet:
-            path: /health/ready
-            port: 8000
-          initialDelaySeconds: 15
-          periodSeconds: 15
         ports:
         - name: virtex
           containerPort: 8081
