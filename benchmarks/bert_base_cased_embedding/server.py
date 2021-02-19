@@ -7,7 +7,6 @@ from transformers.models.bert import BertTokenizer
 from virtex import RequestHandler, http_server
 from virtex.serial import encode_pickle
 
-
 max_batch_size = int(os.getenv('MAX_BATCH_SIZE', 128))
 max_seq_len = int(os.getenv('MAX_SEQUENCE_LENGTH', 12))
 max_time_on_queue = float(os.getenv('MAX_TIME_ON_QUEUE', 0.01))

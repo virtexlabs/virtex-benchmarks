@@ -1,20 +1,20 @@
 #!/bin/bash
 
 # Config
-export TASK='bert-server'
+export TASK='echo-client'
 export LOG_LEVEL='CRITICAL'
 
 # Server config
 export VIRTEX_SERVICE_PORT='8081'
 export MAX_CONCURRENT_CONNECTIONS='10000'
 export NUM_VIRTEX_WORKERS='4'
-export MAX_BATCH_SIZE='128'
+export MAX_BATCH_SIZE='256'
 export MAX_TIME_ON_QUEUE='0.01'
-export METRICS_INTERVAL='0.01'
+export METRICS_INTERVAL='0.05'
 export MAX_SEQUENCE_LENGTH='12'
 
 # Client config
-export NUM_INFERENCES='9000'
+export NUM_INFERENCES='10000'
 export CLIENT_REQUESTS_PER_SECOND='3500'
 export REQUEST_BATCH_SIZE='6'
 export CONTENT_LENGTH='1000'

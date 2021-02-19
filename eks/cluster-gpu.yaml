@@ -1,0 +1,22 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: virtex-perf-gpu
+  region: us-east-2
+  version: "1.19"
+  # Cost: $25.25/hr
+nodeGroups:
+  - name: ng-client
+    instanceType: c5d.2xlarge
+    # 8vcpu / 16GB / 1x200 NVMe SSD / $0.384/hr
+    desiredCapacity: 2
+    volumeSize: 20
+    labels:
+      workLoad: client
+  - name: ng-server
+    instanceType: p3.8xlarge
+    # 32vcpu / 244GB / 4x V100-16GB / $12.24/hr
+    desiredCapacity: 2
+    volumeSize: 40
+    labels:
+      workLoad: server

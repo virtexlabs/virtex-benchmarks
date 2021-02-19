@@ -1,17 +1,22 @@
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
-
 metadata:
-  name: virtex-01
+  name: virtex-perf-cpu
   region: us-east-2
-  version: 1.19
-
+  version: "1.19"
+  # Cost: $5.38/hr
 nodeGroups:
   - name: client-node-group
-    instanceType: m5.large
-    desiredCapacity: 2
-    volumeSize: 80
+    instanceType: c5d.2xlarge
+    # 8vcpu / 16GB / 1 x 200 NVMe SSD / $0.384/hr
+    desiredCapacity: 1
+    volumeSize: 20
+    labels:
+      workLoad: client
   - name: server-node-group
-    instanceType: m5.xlarge
-    desiredCapacity: 2
-    volumeSize: 100
+    instanceType: c5d.12xlarge
+    # 48vcpu / 96GB / 2 x 900 NVMe SSD / $2.304/hr
+    desiredCapacity: 1
+    volumeSize: 40
+    labels:
+      workLoad: server

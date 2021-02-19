@@ -1,0 +1,48 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: virtex-01
+  namespace: virtex
+spec:
+  parallelism: 1
+  completions: 1
+  template:
+    spec:
+      nodeSelector:
+        workLoad: client
+      restartPolicy: Never
+      containers:
+      - name: virtex-client
+        image: 064721117073.dkr.ecr.us-east-2.amazonaws.com/virtex:latest
+        imagePullPolicy: Always
+        env:
+          - name: TASK
+            valueFrom:
+              configMapKeyRef:
+                name: virtex-client-config
+                key: TASK
+          - name: LOG_LEVEL
+            valueFrom:
+              configMapKeyRef:
+                name: virtex-client-config
+                key: LOG_LEVEL
+          - name: NUM_INFERENCES
+            valueFrom:
+              configMapKeyRef:
+                name: virtex-client-config
+                key: NUM_INFERENCES
+          - name: CLIENT_REQUESTS_PER_SECOND
+            valueFrom:
+              configMapKeyRef:
+                name: virtex-client-config
+                key: CLIENT_REQUESTS_PER_SECOND
+          - name: REQUEST_BATCH_SIZE
+            valueFrom:
+              configMapKeyRef:
+                name: virtex-client-config
+                key: REQUEST_BATCH_SIZE
+          - name: CONTENT_LENGTH
+            valueFrom:
+              configMapKeyRef:
+                name: virtex-client-config
+                key: CONTENT_LENGTH
