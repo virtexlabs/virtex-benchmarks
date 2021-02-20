@@ -12,4 +12,4 @@
 
 
 ### To delete your cluster:
-    $ eksctl delete cluster --region=<region-name> --name=virtex-perf-<cpu|gpu>
+    $ eksctl delete cluster --region=<region-name> --name=virtex-perf
