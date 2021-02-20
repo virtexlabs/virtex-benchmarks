@@ -21,7 +21,7 @@ spec:
         app: virtex-server
     spec:
       nodeSelector:
-        workLoad: "server"
+        workLoad: server
       containers:
       - name: virtex-server
         image: virtexlabs/virtex-benchmark:latest
