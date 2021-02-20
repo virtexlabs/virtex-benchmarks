@@ -51,7 +51,11 @@ COPY benchmarks /root/virtex-benchmarks/benchmarks
 # Config
 ENV TASK='' \
     LOG_LEVEL='' \
-    VIRTEX_SERVICE_PORT='' \
+    VIRTEX_SVC_NAME='' \
+    VIRTEX_SVC_PORT='' \
+    VIRTEX_TARGET_PORT='' \
+    PUSHGATEWAY_SVC_NAME='' \
+    PUSHGATEWAY_SVC_PORT='' \
     MAX_CONCURRENT_CONNECTIONS='' \
     NUM_VIRTEX_WORKERS='' \
     MAX_BATCH_SIZE='' \
@@ -64,4 +68,5 @@ ENV TASK='' \
     CONTENT_LENGTH=''
 
 # Entrypoint
+EXPOSE 8081/tcp
 ENTRYPOINT ["/bin/bash", "-l", "/root/virtex-benchmarks/run.sh"]

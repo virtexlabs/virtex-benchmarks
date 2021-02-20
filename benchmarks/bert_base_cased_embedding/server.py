@@ -11,8 +11,8 @@ max_batch_size = int(os.getenv('MAX_BATCH_SIZE', 128))
 max_seq_len = int(os.getenv('MAX_SEQUENCE_LENGTH', 12))
 max_time_on_queue = float(os.getenv('MAX_TIME_ON_QUEUE', 0.01))
 metrics_interval = float(os.getenv('METRICS_INTERVAL', 0.05))
-metrics_host = os.getenv('PUSHGATEWAY_SERVICE_HOST', 'http://127.0.0.1')
-metrics_port = int(os.getenv('PUSHGATEWAY_SERVICE_PORT', 9091))
+metrics_host = os.getenv('PUSHGATEWAY_SVC_NAME', 'http://127.0.0.1')
+metrics_port = int(os.getenv('PUSHGATEWAY_SVC_PORT', 9091))
 
 
 class BertComputation(RequestHandler):

@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: base-cfg
+  namespace: virtex
+data:
+  LOG_LEVEL: "CRITICAL"
+  VIRTEX_SVC_NAME: "virtex-svc"
+  VIRTEX_SVC_PORT: "8081"
+  VIRTEX_TARGET_PORT: "8081"
+  PUSHGATEWAY_SVC_NAME: "pushgateway-svc"
+  PUSHGATEWAY_SVC_PORT: "9091"
+  MAX_CONCURRENT_CONNECTIONS: "10000"
+  METRICS_INTERVAL: "0.025"
+  CLIENT_REQUESTS_PER_SECOND: "3500"
+  REQUEST_BATCH_SIZE: "1"
+  NUM_INFERENCES: "10000"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: echo-server-cfg
+  namespace: virtex
+data:
+  TASK: "echo-server"
+  NUM_VIRTEX_WORKERS: "4"
+  MAX_BATCH_SIZE: "1000"
+  MAX_TIME_ON_QUEUE: "0.005"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: echo-client-cfg
+  namespace: virtex
+data:
+  TASK: "echo-client"
+  CONTENT_LENGTH: "100"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bert-server-cfg
+  namespace: virtex
+data:
+  TASK: "bert-server"
+  NUM_VIRTEX_WORKERS: "5"
+  MAX_BATCH_SIZE: "144"
+  MAX_TIME_ON_QUEUE: "0.01"
+  MAX_SEQUENCE_LENGTH: "12"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bert-client-cfg
+  namespace: virtex
+data:
+  TASK: "bert-client"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: resnet-server-cfg
+  namespace: virtex
+data:
+  TASK: "resnet-server"
+  NUM_VIRTEX_WORKERS: "3"
+  MAX_BATCH_SIZE: "48"
+  MAX_TIME_ON_QUEUE: "0.01"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: resnet-client-cfg
+  namespace: virtex
+data:
+  TASK: "resnet-client"

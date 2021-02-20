@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: virtex-server
+  namespace: virtex
+  labels:
+     app: virtex-server
+spec:
+  selector:
+    matchLabels:
+      app: virtex-server
+  replicas: 8
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 8
+  template:
+    metadata:
+      labels:
+        app: virtex-server
+    spec:
+      nodeSelector:
+        workLoad: "server"
+      containers:
+      - name: virtex-server
+        image: virtexlabs/virtex-benchmark:latest
+        imagePullPolicy: Always
+        resources:
+          requests:
+            # memory: 11Gi
+            # cpu: 5500m
+            memory: 50Gi
+            cpu: 8000m
+            nvidia.com/gpus: 1
+          limits:
+            # memory: 11Gi
+            # cpu: 5500m
+            memory: 50Gi
+            cpu: 8000m
+            nvidia.com/gpus: 1
+        ports:
+        - containerPort: 8081
+        envFrom:
+        - configMapRef:
+            name: base-cfg
+        - configMapRef:
+            name: echo-server-cfg
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: virtex-svc
+  namespace: virtex
+spec:
+  selector:
+    app: virtex-server
+  ports:
+  - port: 8081
+    protocol: TCP
+    targetPort: 8081

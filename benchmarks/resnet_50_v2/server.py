@@ -11,11 +11,11 @@ from virtex.serial import encode_bytes, encode_pickle, \
     decode_pil_from_bytes
 
 
-max_batch_size = int(os.getenv('MAX_BATCH_SIZE', 56))
+max_batch_size = int(os.getenv('MAX_BATCH_SIZE', 48))
 max_time_on_queue = float(os.getenv('MAX_TIME_ON_QUEUE', 0.01))
 metrics_interval = float(os.getenv('METRICS_INTERVAL', 0.05))
-metrics_host = os.getenv('PUSHGATEWAY_SERVICE_HOST', 'http://127.0.0.1')
-metrics_port = int(os.getenv('PUSHGATEWAY_SERVICE_PORT', 9091))
+metrics_host = os.getenv('PUSHGATEWAY_SVC_NAME', 'http://127.0.0.1')
+metrics_port = int(os.getenv('PUSHGATEWAY_SVC_PORT', 9091))
 
 
 # Build ResNet50 request handler
@@ -69,8 +69,8 @@ message2.encode(encode_bytes)
 
 # Validate that handler can process messages
 resnet_request_handler = Resnet50Computation()
-assert resnet_request_handler.validate(message1)
-assert resnet_request_handler.validate(message2)
+resnet_request_handler.validate(message1)
+resnet_request_handler.validate(message2)
 
 # Create http server
 app = http_server(
