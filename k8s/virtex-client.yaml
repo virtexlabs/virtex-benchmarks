@@ -6,8 +6,8 @@ metadata:
   labels:
     app: virtex-client
 spec:
-  parallelism: 1
-  completions: 1
+  parallelism: 4
+  completions: 4
   template:
     spec:
       nodeSelector:
@@ -15,17 +15,17 @@ spec:
       restartPolicy: Never
       containers:
       - name: virtex-client
-        image: virtexlabs/virtex-benchmark:latest
+        image: 064721117073.dkr.ecr.us-east-2.amazonaws.com/virtex:latest
         imagePullPolicy: Always
         resources:
           limits:
-            memory: 3Gi
+            memory: 6Gi
             cpu: 1500m
           requests:
-            memory: 3Gi
+            memory: 6Gi
             cpu: 1500m
         envFrom:
-          - configMapRef:
-              name: base-cfg
-          - configMapRef:
-              name: echo-client-cfg
+        - configMapRef:
+            name: base-cfg
+        - configMapRef:
+            name: bert-client-cfg

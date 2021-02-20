@@ -24,20 +24,20 @@ spec:
         workLoad: server
       containers:
       - name: virtex-server
-        image: virtexlabs/virtex-benchmark:latest
+        image: 064721117073.dkr.ecr.us-east-2.amazonaws.com/virtex:latest
         imagePullPolicy: Always
         resources:
           requests:
             # memory: 11Gi
             # cpu: 5500m
             memory: 50Gi
-            cpu: 8000m
+            cpu: 7500m
             nvidia.com/gpus: 1
           limits:
             # memory: 11Gi
             # cpu: 5500m
-            memory: 50Gi
-            cpu: 8000m
+            memory: 55Gi
+            cpu: 7500m
             nvidia.com/gpus: 1
         ports:
         - containerPort: 8081
@@ -45,7 +45,7 @@ spec:
         - configMapRef:
             name: base-cfg
         - configMapRef:
-            name: echo-server-cfg
+            name: bert-server-cfg
 ---
 apiVersion: v1
 kind: Service

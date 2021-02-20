@@ -8,6 +8,9 @@
 #### Install nvidia-device-plugin (only on gpu cluster)
     $ kubectl apply -f nvidia-device-plugin.yaml
 
+#### Install nvidia gpu monitor (only on gpu cluster)
+    $ kubectl apply -f nvidia-smi.yaml
+
 #### Updated `configmaps.yaml` to configure load test, then
     $ kubectl apply -f configmaps.yaml
 
