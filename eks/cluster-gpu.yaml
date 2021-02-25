@@ -17,8 +17,10 @@ nodeGroups:
   - name: server-node-group
     ami: ami-0d8409627cbd8aa44
     privateNetworking: true
-    # 32vcpu / 244GB / 4x V100-16GB / $12.24/hr
-    instanceType: p3.8xlarge
+    # # 32vcpu / 244GB / 4x V100-16GB / $12.24/hr
+    # instanceType: p3.8xlarge
+    # 8vcpu / 61GB / 1x V100-16GB / $3.06/hr
+    instanceType: p3.2xlarge
     desiredCapacity: 2
     volumeSize: 200
     labels:

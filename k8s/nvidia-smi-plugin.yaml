@@ -9,15 +9,15 @@ spec:
   restartPolicy: OnFailure
   containers:
   - name: nvidia-smi
-    image: nvidia/cuda:latest
+    image: nvidia/cuda:11.1-base
     args:
     - "nvidia-smi"
     resources:
       requests:
         memory: 1Gi
         cpu: 500m
-        nvidia.com/gpu: 8
+        nvidia.com/gpu: 1
       limits:
         memory: 1Gi
         cpu: 500m
-        nvidia.com/gpu: 8
+        nvidia.com/gpu: 1

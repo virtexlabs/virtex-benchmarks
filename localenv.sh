@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Config
-export TASK='echo-client'
+export TASK='bert-client'
 export LOG_LEVEL='CRITICAL'
 
 # Server config
@@ -10,8 +10,8 @@ export VIRTEX_TARGET_PORT='8081'
 export PUSHGATEWAY_SVC_NAME='http://127.0.0.1'
 export PUSHGATEWAY_SVC_PORT='9091'
 export MAX_CONCURRENT_CONNECTIONS='10000'
-export NUM_VIRTEX_WORKERS='2'
-export MAX_BATCH_SIZE='48'
+export NUM_VIRTEX_WORKERS='4'
+export MAX_BATCH_SIZE='144'
 export MAX_TIME_ON_QUEUE='0.01'
 export METRICS_INTERVAL='0.05'
 export MAX_SEQUENCE_LENGTH='12'

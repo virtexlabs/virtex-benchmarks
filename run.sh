@@ -11,7 +11,7 @@ case "$TASK" in
       ;;
    "bert-client")
       cd "$DIR"/benchmarks/bert_base_cased_embedding
-      python client.py
+      python3 client.py
       ;;
    "resnet-server")
       cd "$DIR"/benchmarks/resnet_50_v2
@@ -19,7 +19,7 @@ case "$TASK" in
       ;;
    "resnet-client")
       cd "$DIR"/benchmarks/resnet_50_v2
-      python client.py
+      python3 client.py
       ;;
    "echo-server")
       cd "$DIR"/benchmarks/echo
@@ -27,7 +27,7 @@ case "$TASK" in
       ;;
    "echo-client")
       cd "$DIR"/benchmarks/echo
-      python client.py
+      python3 client.py
       ;;
    *)
      echo "$TASK is not a valid task."
