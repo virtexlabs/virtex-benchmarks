@@ -4,7 +4,6 @@ metadata:
   name: virtex-perf
   region: us-east-2
   version: "1.19"
-  # Cost: $25.25/hr
 nodeGroups:
   - name: client-node-group
     privateNetworking: true
@@ -17,10 +16,12 @@ nodeGroups:
   - name: server-node-group
     ami: ami-0d8409627cbd8aa44
     privateNetworking: true
-    # # 32vcpu / 244GB / 4x V100-16GB / $12.24/hr
-    # instanceType: p3.8xlarge
     # 8vcpu / 61GB / 1x V100-16GB / $3.06/hr
-    instanceType: p3.2xlarge
+    # instanceType: p3.2xlarge
+    # 32vcpu / 244GB / 4x V100-16GB / $12.24/hr
+    # instanceType: p3.8xlarge
+    # 64vcpu / 488GB  / 8x V100-16GB / $24.48/hr
+    instanceType: p3.16xlarge
     desiredCapacity: 2
     volumeSize: 200
     labels:

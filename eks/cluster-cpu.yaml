@@ -4,7 +4,6 @@ metadata:
   name: virtex-perf
   region: us-east-2
   version: "1.19"
-  # Cost: $5.38/hr
 nodeGroups:
   - name: client-node-group
     privateNetworking: true
@@ -18,7 +17,7 @@ nodeGroups:
     privateNetworking: true
     instanceType: c5d.12xlarge
     # 48vcpu / 96GB / 2 x 900 NVMe SSD / $2.304/hr
-    desiredCapacity: 1
+    desiredCapacity: 2
     volumeSize: 200
     labels:
       workLoad: server

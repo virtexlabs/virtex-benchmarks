@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Config
-export TASK='bert-client'
+export TASK='bert-server'
 export LOG_LEVEL='CRITICAL'
 
 # Server config
@@ -9,8 +9,8 @@ export VIRTEX_SVC_NAME='http://127.0.0.1'
 export VIRTEX_TARGET_PORT='8081'
 export PUSHGATEWAY_SVC_NAME='http://127.0.0.1'
 export PUSHGATEWAY_SVC_PORT='9091'
-export MAX_CONCURRENT_CONNECTIONS='10000'
-export NUM_VIRTEX_WORKERS='4'
+export MAX_CONCURRENT_CONNECTIONS='50000'
+export NUM_VIRTEX_WORKERS='2'
 export MAX_BATCH_SIZE='144'
 export MAX_TIME_ON_QUEUE='0.01'
 export METRICS_INTERVAL='0.05'
@@ -19,5 +19,5 @@ export MAX_SEQUENCE_LENGTH='12'
 # Client config
 export NUM_INFERENCES='10000'
 export CLIENT_REQUESTS_PER_SECOND='3500'
-export REQUEST_BATCH_SIZE='6'
+export REQUEST_BATCH_SIZE='1'
 export CONTENT_LENGTH='1000'
