@@ -37,7 +37,7 @@ for i in range(0, num_data, request_batch_size):
 
 # Run load test
 client = HttpLoadTest()
-responses, metrics = client.run(service_url,
-                                messages,
-                                requests_per_second=client_rps)
-pprint.pprint(metrics.dict())
+result = client.run(service_url,
+                    messages,
+                    requests_per_second=client_rps)
+pprint.pprint(result.metrics.dict(), indent=3)
