@@ -13,9 +13,10 @@ from virtex.serial import encode_bytes, encode_pickle, \
 
 max_batch_size = int(os.getenv('MAX_BATCH_SIZE', 48))
 max_time_on_queue = float(os.getenv('MAX_TIME_ON_QUEUE', 0.01))
-metrics_interval = float(os.getenv('METRICS_INTERVAL', 0.05))
-metrics_host = os.getenv('PUSHGATEWAY_SVC_NAME', 'http://127.0.0.1')
-metrics_port = int(os.getenv('PUSHGATEWAY_SVC_PORT', 9091))
+prom_interval = float(os.getenv('PROMETHEUS_INTERVAL', 0.05))
+prom_host = os.getenv('PROMETHEUS_HOST', 'http://127.0.0.1')
+prom_port = int(os.getenv('PROMETHEUS_PORT', 9090))
+prom_mode = os.getenv('PROMETHEUS_MODE', 'off')
 
 
 # Build ResNet50 request handler
@@ -78,8 +79,8 @@ app = http_server(
     handler=Resnet50Computation(),
     max_batch_size=max_batch_size,
     max_time_on_queue=max_time_on_queue,
-    metrics_host=metrics_host,
-    metrics_port=metrics_port,
-    metrics_mode='push',
-    metrics_interval=metrics_interval
+    prom_host=prom_host,
+    prom_port=prom_port,
+    prom_mode=prom_mode,
+    prom_push_interval=prom_interval
 )

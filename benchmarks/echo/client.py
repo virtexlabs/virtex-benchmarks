@@ -5,7 +5,7 @@ from virtex import HttpLoadTest, HttpMessage
 
 
 # Get load test config from environment
-num_data = int(os.getenv('NUM_INFERENCES', 9000))
+num_data = int(os.getenv('NUM_QUERIES', 9000))
 request_batch_size = int(os.getenv('REQUEST_BATCH_SIZE', 6))
 client_rps = int(os.getenv('CLIENT_REQUESTS_PER_SECOND', 3500))
 content_length = int(os.getenv('CONTENT_LENGTH', 100))

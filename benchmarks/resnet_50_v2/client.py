@@ -9,7 +9,7 @@ from virtex.serial import encode_bytes
 
 
 # Get load test config from environment
-num_data = int(os.getenv('NUM_INFERENCES', 9000))
+num_data = int(os.getenv('NUM_QUERIES', 9000))
 request_batch_size = int(os.getenv('REQUEST_BATCH_SIZE', 6))
 client_rps = int(os.getenv('CLIENT_REQUESTS_PER_SECOND', 3500))
 service_host = os.getenv('VIRTEX_SVC_NAME', 'http://127.0.0.1')
