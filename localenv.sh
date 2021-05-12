@@ -4,7 +4,7 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY='YES'
 
 # Config
 export TASK='echo-server'
-export LOG_LEVEL='CRITICAL'
+export LOG_LEVEL='INFO'
 
 # Server config
 export VIRTEX_SVC_NAME='http://127.0.0.1'
@@ -12,7 +12,7 @@ export VIRTEX_TARGET_PORT='8081'
 export PROMETHEUS_HOST='http://127.0.0.1'
 export PROMETHEUS_PORT='9091'
 export PROMETHEUS_INTERVAL='0.05'
-export PROMETHEUS_MODE='push'
+export PROMETHEUS_MODE='scrape'
 export MAX_CONCURRENT_CONNECTIONS='100000'
 export NUM_VIRTEX_WORKERS='5'
 export MAX_BATCH_SIZE='2000'

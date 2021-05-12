@@ -1,6 +1,6 @@
 # Extras
 *.DS_Store
-*/.idea/
+.idea/
 .local/
 data/tiny-imagenet-200/
 docker/cuda/include
